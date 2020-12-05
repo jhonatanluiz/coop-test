@@ -1,8 +1,7 @@
 package com.jj.coop.exception;
 
+import com.jj.coop.dto.FieldErrorDTO;
 import com.jj.coop.service.HeaderUtil;
-import com.netflix.hystrix.exception.HystrixRuntimeException;
-import feign.FeignException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.ConcurrencyFailureException;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +18,6 @@ import org.zalando.problem.violations.ConstraintViolationProblem;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -71,8 +69,8 @@ public class ExceptionTranslator implements ProblemHandling, SecurityAdviceTrait
     @Override
     public ResponseEntity<Problem> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, @Nonnull NativeWebRequest request) {
         BindingResult result = ex.getBindingResult();
-        List<FieldErrorVM> fieldErrors = result.getFieldErrors().stream()
-            .map(f -> new FieldErrorVM(f.getObjectName().replaceFirst("DTO$", ""), f.getField(), f.getDefaultMessage()))
+        List<FieldErrorDTO> fieldErrors = result.getFieldErrors().stream()
+            .map(f -> new FieldErrorDTO(f.getObjectName().replaceFirst("DTO$", ""), f.getField(), f.getDefaultMessage()))
             .collect(Collectors.toList());
 
         Problem problem = Problem.builder()

@@ -4,9 +4,15 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,6 +20,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Table(name = "tb_cliente")
+@EntityListeners(AuditingEntityListener.class)
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Cliente implements Serializable {
 
@@ -27,6 +34,19 @@ public class Cliente implements Serializable {
 
     @Column(name = "nu_cpf")
     private String nuCpf;
+
+    @Column(name = "dt_criado")
+    @CreatedDate
+    private Date dtCriado;
+
+    @Column(name = "dt_modificado")
+    @LastModifiedDate
+    private Date dtModificado;
+
+    @CreatedBy
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "co_usuario_cadastro", referencedColumnName = "co_seq_usuario")
+    private Usuario coUsuarioCadastro;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Email> emails = new HashSet<>();

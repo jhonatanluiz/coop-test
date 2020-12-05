@@ -1,5 +1,6 @@
 package com.jj.coop.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.jj.coop.entity.Perfil;
 import lombok.Data;
 
@@ -18,6 +19,7 @@ public class UsuarioDTO {
     @Email
     public String email;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     public String password;
 
     @NotNull

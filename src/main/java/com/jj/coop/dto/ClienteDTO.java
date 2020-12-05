@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 @Data
@@ -33,4 +34,10 @@ public class ClienteDTO implements Serializable {
     @NotNull
     @Valid
     public EnderecoDTO endereco;
+
+    public Date dtCriado;
+
+    public Date dtModificado;
+
+    public UsuarioDTO coUsuarioCadastro;
 }

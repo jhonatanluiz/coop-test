@@ -1,5 +1,6 @@
 package com.jj.coop.dto;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
@@ -12,24 +13,24 @@ public class EnderecoDTO implements Serializable {
     public Long id;
 
     @NotNull
-    @JsonProperty("cep")
+    @JsonAlias({"cep", "nuCep"})
     private Long nuCep;
 
     @NotNull
-    @JsonProperty("street")
+    @JsonAlias({"logradouro", "street"})
     private String logradouro;
 
     @NotNull
-    @JsonProperty("neighborhood")
+    @JsonAlias({"noBairro", "neighborhood"})
     private String noBairro;
 
     @NotNull
-    @JsonProperty("city")
+    @JsonAlias({"noCidade", "city"})
     private String noCidade;
 
-    private String dsComplemento;
-
     @NotNull
-    @JsonProperty("state")
+    @JsonAlias({"state", "coUf"})
     private String coUf;
+
+    private String dsComplemento;
 }

@@ -1,7 +1,7 @@
 package com.jj.coop.exception;
 
 import com.jj.coop.dto.FieldErrorDTO;
-import com.jj.coop.service.HeaderUtil;
+import com.jj.coop.util.HeaderUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.ConcurrencyFailureException;
 import org.springframework.http.ResponseEntity;

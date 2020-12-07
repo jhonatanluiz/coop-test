@@ -1,4 +1,4 @@
-package com.jj.coop.dto.mapper;
+package com.jj.coop.mapper;
 
 import com.jj.coop.dto.ClienteDTO;
 import com.jj.coop.entity.Cliente;

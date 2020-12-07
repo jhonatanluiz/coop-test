@@ -1,4 +1,4 @@
-package com.jj.coop.service;
+package com.jj.coop.util;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

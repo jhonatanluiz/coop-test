@@ -44,7 +44,7 @@ public class Cliente implements Serializable {
     private Date dtModificado;
 
     @CreatedBy
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "co_usuario_cadastro", referencedColumnName = "co_seq_usuario")
     private Usuario coUsuarioCadastro;
 

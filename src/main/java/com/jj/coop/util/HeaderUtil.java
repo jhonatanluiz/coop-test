@@ -1,4 +1,4 @@
-package com.jj.coop.service;
+package com.jj.coop.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

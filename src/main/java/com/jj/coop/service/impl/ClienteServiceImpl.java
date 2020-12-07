@@ -1,7 +1,7 @@
 package com.jj.coop.service.impl;
 
 import com.jj.coop.dto.ClienteDTO;
-import com.jj.coop.dto.mapper.ClienteMapper;
+import com.jj.coop.mapper.ClienteMapper;
 import com.jj.coop.entity.Cliente;
 import com.jj.coop.repository.ClienteRepository;
 import com.jj.coop.service.ClienteService;

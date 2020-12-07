@@ -2,7 +2,7 @@ package com.jj.coop.resource;
 
 import com.jj.coop.dto.EnderecoDTO;
 import com.jj.coop.service.CepService;
-import com.jj.coop.service.ResponseUtil;
+import com.jj.coop.util.ResponseUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,7 @@ public class CepResource {
 
     private final CepService cepService;
 
-    @GetMapping(value = "/consulta-cep/{nuCep}")
+    @GetMapping(value = "/cep/{nuCep}")
     public ResponseEntity<EnderecoDTO> consulta(@PathVariable String nuCep){
         return ResponseUtil.wrapOrNotFound(cepService.consulta(nuCep));
     }

@@ -73,4 +73,12 @@ public class ClienteServiceImpl implements ClienteService {
                 .map(clienteMapper::toDto)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<ClienteDTO> findById(Long id){
+        return clienteRepository
+                .findById(id)
+                .map(clienteMapper::toDto);
+    }
 }

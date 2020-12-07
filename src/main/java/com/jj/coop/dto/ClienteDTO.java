@@ -17,7 +17,6 @@ public class ClienteDTO implements Serializable {
 
     @NotNull
     @Size(min = 3, max = 100)
-    @Pattern(regexp = "^[\\p{Alnum}]{3,100}$")
     public String noCliente;
 
     @NotNull
@@ -39,5 +38,5 @@ public class ClienteDTO implements Serializable {
 
     public Date dtModificado;
 
-    public UsuarioDTO coUsuarioCadastro;
+    public String coUsuarioCadastro;
 }

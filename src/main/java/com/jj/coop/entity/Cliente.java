@@ -44,9 +44,8 @@ public class Cliente implements Serializable {
     private Date dtModificado;
 
     @CreatedBy
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "co_usuario_cadastro", referencedColumnName = "co_seq_usuario")
-    private Usuario coUsuarioCadastro;
+    @Column(name = "co_usuario_cadastro")
+    private String coUsuarioCadastro;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Email> emails = new HashSet<>();

@@ -27,7 +27,7 @@ public class DatabaseConfigurer {
     private final UsuarioRepository usuarioRepository;
 
     @Bean
-    public AuditorAware<Usuario> auditorProvider() {
-        return new AuditorAwareConfigurer(usuarioRepository);
+    public AuditorAware<String> auditorProvider() {
+        return new AuditorAwareConfigurer();
     }
 }

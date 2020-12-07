@@ -20,6 +20,8 @@ public interface ClienteService {
 
     Optional<ClienteDTO> findByNuCpf(String nuIdentidade);
 
+    Optional<ClienteDTO> findById(Long id);
+
     List<ClienteDTO> findAllByNmClienteLike(String nmCliente);
 
     void delete(Long id);

@@ -90,8 +90,8 @@ public class ClienteResource {
             @ApiResponse(code = 500, message = "Erro inesperado no servidor.")
     })
     @GetMapping("/clientes/{id}")
-    public ResponseEntity<ClienteDTO> getCliente(@PathVariable String id) {
-        Optional<ClienteDTO> cliente = clienteService.findByNuCpf(id);
+    public ResponseEntity<ClienteDTO> getCliente(@PathVariable Long id) {
+        Optional<ClienteDTO> cliente = clienteService.findById(id);
         return ResponseUtil.wrapOrNotFound(cliente);
     }
 

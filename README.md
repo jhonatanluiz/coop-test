@@ -7,19 +7,6 @@ create database dbcoop;
 
 use dbcoop;
 
-create table tb_usuario
-(
-    co_seq_usuario int auto_increment
-        primary key,
-    nm_usuario     varchar(100)      not null,
-    ds_email       varchar(45)       not null,
-    ds_senha       varchar(255)      not null,
-    st_ativo       tinyint default 1 not null,
-    co_perfil      int               not null,
-    constraint ds_email_UNIQUE
-        unique (ds_email)
-);
-
 create table tb_cliente
 (
     co_seq_cliente      int auto_increment
@@ -28,12 +15,13 @@ create table tb_cliente
     nu_cpf              varchar(11)  not null,
     dt_criado           datetime     not null,
     dt_modificado       datetime     not null,
-    co_usuario_cadastro int          not null,
+    co_usuario_cadastro varchar(50)  not null,
     constraint tb_cliente_nu_cpf_uindex
-        unique (nu_cpf),
-    constraint tb_cliente_tb_usuario_co_seq_usuario_fk
-        foreign key (co_usuario_cadastro) references tb_usuario (co_seq_usuario)
+        unique (nu_cpf)
 );
+
+create index tb_cliente_tb_usuario_co_seq_usuario_fk
+    on tb_cliente (co_usuario_cadastro);
 
 create table tb_email
 (
@@ -72,6 +60,20 @@ create table tb_telefone
     constraint tb_telefone_tb_cliente_co_seq_cliente_fk
         foreign key (co_cliente) references tb_cliente (co_seq_cliente)
 );
+
+create table tb_usuario
+(
+    co_seq_usuario int auto_increment
+        primary key,
+    nm_usuario     varchar(100)      not null,
+    ds_email       varchar(45)       not null,
+    ds_senha       varchar(255)      not null,
+    st_ativo       tinyint default 1 not null,
+    co_perfil      int               not null,
+    constraint ds_email_UNIQUE
+        unique (ds_email)
+);
+
 
 INSERT INTO dbcoop.tb_usuario (co_seq_usuario, nm_usuario, ds_email, ds_senha, st_ativo, co_perfil) VALUES (1, 'admin', 'admin@coop.com', '$2a$10$481C3yi0xVfPz1Q4T4RuqOpnDaE0tr/SjD.gpAobuq/qjR6qNNjwq', 1, 0);
 INSERT INTO dbcoop.tb_usuario (co_seq_usuario, nm_usuario, ds_email, ds_senha, st_ativo, co_perfil) VALUES (2, 'user', 'user@coop.com', '$2a$10$481C3yi0xVfPz1Q4T4RuqOpnDaE0tr/SjD.gpAobuq/qjR6qNNjwq', 1, 1);
